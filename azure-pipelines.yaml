@@ -41,7 +41,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         commandOptions: '-backend-config=$(credentials.secureFilePath)'
-        backendServiceArm: 'azurerm-sc'
+        backendServiceArm: 'service-connection'
         backendAzureRmResourceGroupName: 'tstate'
         backendAzureRmStorageAccountName: 'tfstate14536'
         backendAzureRmContainerName: 'tstate'
@@ -52,7 +52,7 @@ stages:
     - task: AzureCLI@1
       displayName: Set Environment Variables for Terraform
       inputs:
-        azureSubscription: azurerm-sc
+        azureSubscription: service-connection
         scriptLocation: inlineScript
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         addSpnToEnvironment: true
@@ -70,7 +70,7 @@ stages:
         command: 'apply'
         commandOptions: '-auto-approve'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-        environmentServiceNameAzureRM: 'azurerm-sc'
+        environmentServiceNameAzureRM: 'service-connection'
 
 - stage: Build
   jobs:
@@ -121,7 +121,7 @@ stages:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'azurerm-sc'
+              azureSubscription: 'service-connection'
               appType: 'webApp'
               WebAppName: 'udacitytest-AppService'
               packageForLinux: '$(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip'
@@ -302,7 +302,7 @@ stages:
 #        provider: 'azurerm'
 #        command: 'init'
 #        commandOptions: '-backend-config=$(credentials.secureFilePath)'
-#        backendServiceArm: 'azurerm-sc'
+#        backendServiceArm: 'service-connection'
 #        backendAzureRmResourceGroupName: 'tstate'
 #        backendAzureRmStorageAccountName: 'tstate19206'
 #        backendAzureRmContainerName: 'tstate'
@@ -317,4 +317,4 @@ stages:
 #        commandOptions: |
 #          -auto-approve 
 #        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-#        environmentServiceNameAzureRM: 'azurerm-sc'
+#        environmentServiceNameAzureRM: 'service-connection'
