@@ -1,5 +1,5 @@
 variables:
- - group: udacity
+ - group: credentials
 
 trigger:
 - master
