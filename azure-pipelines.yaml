@@ -13,10 +13,10 @@ stages:
       vmImage: 'ubuntu-20.04'
 
     steps:
-    #Download azurecreds.conf File
+    #Download creds.conf File
     - task: DownloadSecureFile@1
       displayName: Download creds.conf file
-      name: azurecreds
+      name: credentials
       inputs:
         secureFile: 'creds.conf'
 
@@ -40,7 +40,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
-        commandOptions: '-backend-config=$(azurecreds.secureFilePath)'
+        commandOptions: '-backend-config=$(credentials.secureFilePath)'
         backendServiceArm: 'azurerm-sc'
         backendAzureRmResourceGroupName: 'tstate'
         backendAzureRmStorageAccountName: 'tfstate14536'
@@ -274,12 +274,12 @@ stages:
 #    vmImage: 'ubuntu-18.04'
 #    steps:
 #    
-#    #Download azurecreds.conf File
+#    #Download credentials.conf File
 #    - task: DownloadSecureFile@1
-#      displayName: Download azurecreds.conf file
-#      name: azurecreds
+#      displayName: Download credentials.conf file
+#      name: credentials
 #      inputs:
-#        secureFile: 'azurecreds.conf'
+#        secureFile: 'credentials.conf'
 #
 #    # Install SSH Key for VM
 #    - task: InstallSSHKey@0
@@ -301,7 +301,7 @@ stages:
 #      inputs:
 #        provider: 'azurerm'
 #        command: 'init'
-#        commandOptions: '-backend-config=$(azurecreds.secureFilePath)'
+#        commandOptions: '-backend-config=$(credentials.secureFilePath)'
 #        backendServiceArm: 'azurerm-sc'
 #        backendAzureRmResourceGroupName: 'tstate'
 #        backendAzureRmStorageAccountName: 'tstate19206'
