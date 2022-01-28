@@ -11,7 +11,7 @@ terraform {
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
     resource_group_name  = "tfstate"
-    access_key           = "OhTFkiiWuh2CGRWGocfd3xJ9BhG2b4UA/2dtCgNpGTjOr8A0SzQ3/ggicpMZvnI1OrddBsiYBX2HFl8FOtPhWg=="
+    access_key           = ""
   }
 }
 module "resource_group" {
