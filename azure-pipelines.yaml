@@ -41,7 +41,7 @@ stages:
         provider: 'azurerm'
         command: 'init'
         commandOptions: '-backend-config=$(credentials.secureFilePath)'
-        backendServiceArm: 'service-connection'
+        backendServiceArm: 'service-connection2'
         backendAzureRmResourceGroupName: 'tfstate'
         backendAzureRmStorageAccountName: 'tfstate14536'
         backendAzureRmContainerName: 'tfstate'
@@ -52,7 +52,7 @@ stages:
     - task: AzureCLI@1
       displayName: Set Environment Variables for Terraform
       inputs:
-        azureSubscription: service-connection
+        azureSubscription: service-connection2
         scriptLocation: inlineScript
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
         addSpnToEnvironment: true
@@ -70,7 +70,7 @@ stages:
         command: 'apply'
         commandOptions: '-auto-approve'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
-        environmentServiceNameAzureRM: 'service-connection'
+        environmentServiceNameAzureRM: 'service-connection2'
 
 - stage: Build
   jobs:
