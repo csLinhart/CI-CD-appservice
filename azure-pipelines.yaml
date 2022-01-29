@@ -70,7 +70,7 @@ stages:
         command: 'apply'
         commandOptions: '-auto-approve'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-        environmentServiceNameAzureRM: 'service-connection2'
+        environmentServiceNameAzureRM: 'service-connection-CL'
 
 - stage: Build
   jobs:
@@ -121,7 +121,7 @@ stages:
           - task: AzureRmWebAppDeployment@4
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'service-connection'
+              azureSubscription: 'service-connection-CL'
               appType: 'webApp'
               WebAppName: 'udacitytest-AppService'
               packageForLinux: '$(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip'
@@ -302,7 +302,7 @@ stages:
 #        provider: 'azurerm'
 #        command: 'init'
 #        commandOptions: '-backend-config=$(credentials.secureFilePath)'
-#        backendServiceArm: 'service-connection'
+#        backendServiceArm: 'service-connection-CL'
 #        backendAzureRmResourceGroupName: 'tstate'
 #        backendAzureRmStorageAccountName: 'tfstate14536'
 #        backendAzureRmContainerName: 'tstate'
@@ -317,4 +317,4 @@ stages:
 #        commandOptions: |
 #          -auto-approve 
 #        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-#        environmentServiceNameAzureRM: 'service-connection'
+#        environmentServiceNameAzureRM: 'service-connection-CL'
