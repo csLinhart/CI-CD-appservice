@@ -7,7 +7,7 @@ tenant_id = ""
 
 # Resource Group/Location
 location = "eastus"
-resource_group = "CL-rg"
+resource_group = "CL-RG-udacity"
 application_type = "demo"
 
 # Network
