@@ -250,10 +250,10 @@ stages:
         targetPath: '$(System.DefaultWorkingDirectory)/log/newman'
         artifactName: 'drop-newman-logs'
     - task: PublishTestResults@2
-      displayName: 'Publish Postman Test Results'
+      displayName: 'Publish Regression Test Results'
       inputs:
         testRunner: 'JUnit'
         searchFolder: '$(System.DefaultWorkingDirectory)/log/newman'
         testResultsFiles: '*.xml'
         mergeTestResults: true
-        testRunTitle: 'Postman Test Results'
+        testRunTitle: 'Regression Test Results'
