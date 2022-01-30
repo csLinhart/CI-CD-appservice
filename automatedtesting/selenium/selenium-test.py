@@ -34,16 +34,16 @@ def remove_cart(driver,n):
         product = driver.find_element_by_css_selector("div[class='inventory_details_name large_size']").text
         print(timestamp() + " " + product + " removed from shopping cart!")
         driver.find_element_by_css_selector("button.inventory_details_back_button").click()
-        acum +=1
+        acum += 1
     print(timestamp() +' '+ str(acum) + ' items were removed from the shopping cart.')
 
 if __name__ == "__main__":
-    print ('Starting the browser...')
+    print(timestamp() + 'Tests start...')
     options = ChromeOptions()
     options.add_argument("--headless") 
     driver = webdriver.Chrome(options=options)
 
-    print (timestamp()+' Browser was launched. Navigating to the login page...')
+    print(timestamp()+' Browser was launched. Navigating to the login page...')
 
     login(driver, 'standard_user', 'secret_sauce')
     add_cart(driver, 6)
